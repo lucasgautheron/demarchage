@@ -95,7 +95,8 @@ td,th { font-size: 75%; }
 			 data-show-export="true"
 			 data-click-to-select="true"
              data-escape="false"
-			 data-toolbar="#toolbar">
+			 data-toolbar="#toolbar"
+             data-pagination="true">
 	<thead>
 		<tr>
 			<th data-field="state" data-checkbox="true"></th>
