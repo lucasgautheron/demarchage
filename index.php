@@ -40,19 +40,7 @@ $records = json_decode(file_get_contents('done.json'), true);
 
   <meta charset="UTF-8">
   
-<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
-<meta name="apple-mobile-web-app-title" content="CodePen">
-
-<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
-
-<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
-
-
-  <title>CodePen - Bootstrap Table - Filter control</title>
-  
-  
-  
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css'>
 <link rel='stylesheet' href='https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css'>
   
@@ -66,6 +54,10 @@ $records = json_decode(file_get_contents('done.json'), true);
 	font-weight: bold;
 	color: #0277BD;
 }
+
+table { border-collapse: collapse;}
+td { padding: 0px 4px; border: 1px solid black; font-size: 80%; }
+tr { padding: 0; margin: 0; }
 </style>
 
   <script>
@@ -89,10 +81,6 @@ $records = json_decode(file_get_contents('done.json'), true);
 <h2>Démarchage téléphonique</h2>
 
 <input type="button" name="save" id="save" value="Enregistrer" />
-
-<h1>Bootstrap Table</h1>
-<p> Mémo pour les options du Bootstrap Table : <a href="http://bootstrap-table.wenzhixin.net.cn/documentation/">Bootstrap Table Documentation</a></p>
-<p>Eléments de Bootstrap Table utilisés : <a href="http://jsfiddle.net/wenyi/e3nk137y/3178/">Data Checkbox</a>, pour cocher les éléments à sélectionner, <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/extensions/filter-control.html">extension Filter control</a>, pour les filtres via les colonnes, <a href="https://github.com/kayalshri/tableExport.jquery.plugin">extension Data export</a> pour exporter</p>
 
 <div id="toolbar">
 		<select class="form-control">
