@@ -133,8 +133,8 @@ $records = json_decode(file_get_contents('done.json'), true);
         <td><?php echo $socio['firstname'] ?></td>
         <td><?php echo $socio['lastname'] ?></td>
         <td><?php echo $socio['billing_period_unit'] ?></td> 
-        <td><?php echo date('d/m/Y', $socio['next_billing_at']/1000) ?></td>
-        <td><?php echo date('m/Y', $socio['card_expiry']/1000) ?></td>
+        <td><?php echo date('Y-m-d', $socio['next_billing_at']/1000) ?></td>
+        <td><?php echo date('Y-m', $socio['card_expiry']/1000) ?></td>
         <td><?php echo $socio['amount'] ?> €</td>
         <td><?php echo format_phone($socio['phone']) ?></td>
         <td><a href="<?php echo str_replace('https://lemediatv.fr', 'https://www.lemediatv.fr', $socio['updateCardUrl']) ?>" target="_blank">url</a></td>
