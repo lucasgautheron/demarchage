@@ -82,9 +82,9 @@ td,th { font-size: 75%; }
 
 <div id="toolbar">
 		<select class="form-control">
-				<option value="">Export Basic</option>
-				<option value="all">Export All</option>
-				<option value="selected">Export Selected</option>
+				<option value="">Export simple</option>
+				<option value="all">Exporter tout</option>
+				<option value="selected">Exporter la sélection</option>
 		</select>
 </div>
 
