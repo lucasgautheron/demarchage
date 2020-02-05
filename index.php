@@ -55,9 +55,7 @@ $records = json_decode(file_get_contents('done.json'), true);
 	color: #0277BD;
 }
 
-table { border-collapse: collapse;}
-td,th { padding: 0px 4px; font-size: 80%; }
-tr { padding: 0; margin: 0; }
+td,th { font-size: 75%; }
 </style>
 
   <script>
@@ -102,7 +100,6 @@ tr { padding: 0; margin: 0; }
 		<tr>
 			<th data-field="state" data-checkbox="true"></th>
             <th data-field="email">E-mail</td>
-            <th data-field="prenom">Prénom</td>
             <th data-field="nom">Nom</td>
             <th data-field="facturation">Facturation</td>
             <th data-field="echeance" data-sortable="true">Echéance</td>
@@ -119,8 +116,7 @@ tr { padding: 0; margin: 0; }
     <tr class="socio" id="<?php echo $socio['chargebee_id'] ?>">
 		<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
         <td><?php echo $socio['email'] ?></td>
-        <td><?php echo $socio['firstname'] ?></td>
-        <td><?php echo $socio['lastname'] ?></td>
+        <td><?php echo $socio['firstname'] ?> <?php echo $socio['lastname'] ?></td>
         <td><?php echo $socio['billing_period_unit'] ?></td> 
         <td><?php echo date('Y-m-d', $socio['next_billing_at']/1000) ?></td>
         <td><?php echo date('Y-m', $socio['card_expiry']/1000) ?></td>
