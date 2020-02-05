@@ -158,6 +158,32 @@ var trBoldBlue = $("table");
 $(trBoldBlue).on("click", "tr", function () {
   $(this).toggleClass("bold-blue");
 });
+
+  $("#save").click(function(event) {
+    $("#save").attr("disabled", "disabled");
+    $("#save").val("Enregistrement en cours...");
+
+    entries = [];
+    
+    $(".socio").each(function() {
+        var chargebee_id = $(this).attr('id');
+        var checked = $(this).find("input[type='checkbox'].is_done").is(':checked');
+        var observations = $(this).find("textarea").val();
+        
+       if (checked || observations)
+       {
+           entries.push({id: chargebee_id, done: checked, observations: observations});
+       }
+    });
+
+    console.log(entries);
+
+    $.post("save.php", {data: entries}, function(data) {
+      console.log(data);
+      $("#save").val("Enregistrer");
+      $("#save").prop('disabled', false);
+    }).fail(function(s) { console.log("fail", s); });
+  });
 //# sourceURL=pen.js
     </script>
 </body>
