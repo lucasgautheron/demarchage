@@ -120,9 +120,9 @@ $records = json_decode(file_get_contents('done.json'), true);
             <th data-field="expirationcb" data-sortable="true">Expiration CB</td>
             <th data-field="montant" data-sortable="true">Montant</td>
             <th data-field="telephone">Téléphone</td>
-            <th data-field="url">URL</td>
-            <th data-field="fait" data-sortable="true">Fait</td>
-            <th data-field="observations">Observations</td>
+            <th>URL</td>
+            <th>Fait</td>
+            <th>Observations</td>
 		</tr>
 	</thead>
 	<tbody>
