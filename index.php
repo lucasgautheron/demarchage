@@ -104,10 +104,11 @@ $records = json_decode(file_get_contents('done.json'), true);
 
 <table id="table" 
 			 data-toggle="table"
-			 data-search="true"
+             data-search="true"
 			 data-filter-control="true" 
 			 data-show-export="true"
 			 data-click-to-select="true"
+             data-escape="false"
 			 data-toolbar="#toolbar">
 	<thead>
 		<tr>
@@ -120,9 +121,9 @@ $records = json_decode(file_get_contents('done.json'), true);
             <th data-field="expirationcb" data-sortable="true">Expiration CB</td>
             <th data-field="montant" data-sortable="true">Montant</td>
             <th data-field="telephone">Téléphone</td>
-            <th data-escape="false">URL</td>
-            <th data-escape="false">Fait</td>
-            <th data-escape="false">Observations</td>
+            <th data-escape="false" data-searchable="false">URL</td>
+            <th data-escape="false" data-searchable="false">Fait</td>
+            <th data-escape="false" data-searchable="false">Observations</td>
 		</tr>
 	</thead>
 	<tbody>
