@@ -56,7 +56,7 @@ $records = json_decode(file_get_contents('done.json'), true);
 }
 
 table { border-collapse: collapse;}
-td { padding: 0px 4px; border: 1px solid black; font-size: 80%; }
+td,th { padding: 0px 4px; font-size: 80%; }
 tr { padding: 0; margin: 0; }
 </style>
 
