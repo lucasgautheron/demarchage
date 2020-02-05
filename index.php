@@ -97,10 +97,15 @@ td,th { font-size: 75%; }
              data-escape="false"
 			 data-toolbar="#toolbar"
              data-pagination="true"
-             data-page-size="100">
+             data-page-size="100"
+             data-url="data/url.json"
+             data-id-field="id"
+             data-editable-emptytext="Default empty text."
+             data-editable-url="test.php">
 	<thead>
 		<tr>
 			<th data-field="state" data-checkbox="true"></th>
+            <th data-field="id">ID</th>
             <th data-field="email">E-mail</td>
             <th data-field="nom">Nom</td>
             <th data-field="facturation">Facturation</td>
@@ -117,6 +122,7 @@ td,th { font-size: 75%; }
     <?php foreach($socios as $socio) : ?>
     <tr class="socio" id="<?php echo $socio['chargebee_id'] ?>">
 		<td class="bs-checkbox"><input data-index="<?php echo $socio['chargebee_id'] ?>" name="btSelectItem" type="checkbox"></td>
+        <td><?php echo $socio['chargebee_id'] ?></td>
         <td><?php echo $socio['email'] ?></td>
         <td><?php echo $socio['firstname'] ?> <?php echo $socio['lastname'] ?></td>
         <td><?php echo $socio['billing_period_unit'] ?></td> 
