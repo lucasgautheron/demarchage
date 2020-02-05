@@ -126,7 +126,7 @@ td,th { font-size: 75%; }
         <td><?php echo format_phone($socio['phone']) ?></td>
         <td><a href="<?php echo str_replace('https://lemediatv.fr', 'https://www.lemediatv.fr', $socio['updateCardUrl']) ?>" target="_blank">url</a></td>
         <td><input type="checkbox" <?php if (is_done($socio['chargebee_id'])) { echo 'value="1"'; } ?> class="is_done" /></td>
-        <td><?php echo htmlspecialchars(observations($socio['chargebee_id'])) ?></textarea></td>
+        <td><?php echo htmlspecialchars(observations($socio['chargebee_id'])) ?></td>
     </tr>
     <?php endforeach; ?>
 	</tbody>
