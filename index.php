@@ -109,14 +109,14 @@ td,th { font-size: 75%; }
             <th data-field="montant" data-sortable="true">Montant</td>
             <th data-field="telephone">Téléphone</td>
             <th data-escape="false" data-searchable="false">URL</td>
-            <th data-field="done" data-searchable="false" data-checkbox="true">Fait</td>
+            <th data-field="done" data-searchable="false">Fait</td>
             <th data-field="observations" data-escape="true" data-searchable="true" data-editable="true">Observations</td>
 		</tr>
 	</thead>
 	<tbody>
     <?php foreach($socios as $socio) : ?>
     <tr class="socio" id="<?php echo $socio['chargebee_id'] ?>">
-		<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
+		<td class="bs-checkbox"><input data-index="<?php echo $socio['chargebee_id'] ?>" name="btSelectItem" type="checkbox"></td>
         <td><?php echo $socio['email'] ?></td>
         <td><?php echo $socio['firstname'] ?> <?php echo $socio['lastname'] ?></td>
         <td><?php echo $socio['billing_period_unit'] ?></td> 
