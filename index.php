@@ -98,7 +98,7 @@ td,th { font-size: 75%; }
 			 data-toolbar="#toolbar"
              data-pagination="true"
              data-page-size="100"
-             data-url="data/url.json"
+             data-url="get.php"
              data-id-field="id"
              data-editable-emptytext="Default empty text."
              data-editable-url="test.php">
@@ -113,7 +113,7 @@ td,th { font-size: 75%; }
             <th data-field="expirationcb" data-sortable="true">Expiration CB</td>
             <th data-field="montant" data-sortable="true">Montant</td>
             <th data-field="telephone">Téléphone</td>
-            <th data-escape="false" data-searchable="false">URL</td>
+            <th data-escape="false" data-searchable="false" date-field="url">URL</td>
             <th data-field="done" data-searchable="false" date-editable="true">Fait</td>
             <th data-field="observations" data-escape="true" data-searchable="true" data-editable="true">Observations</td>
 		</tr>
