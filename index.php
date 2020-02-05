@@ -114,7 +114,7 @@ td,th { font-size: 75%; }
             <th data-field="montant" data-sortable="true">Montant</td>
             <th data-field="telephone">Téléphone</td>
             <th data-escape="false" data-searchable="false">URL</td>
-            <th data-field="done" data-searchable="false">Fait</td>
+            <th data-field="done" data-searchable="false" date-editable="true">Fait</td>
             <th data-field="observations" data-escape="true" data-searchable="true" data-editable="true">Observations</td>
 		</tr>
 	</thead>
@@ -131,8 +131,8 @@ td,th { font-size: 75%; }
         <td><?php echo $socio['amount'] ?> €</td>
         <td><?php echo format_phone($socio['phone']) ?></td>
         <td><a href="<?php echo str_replace('https://lemediatv.fr', 'https://www.lemediatv.fr', $socio['updateCardUrl']) ?>" target="_blank">url</a></td>
-        <td><input type="checkbox" <?php if (is_done($socio['chargebee_id'])) { echo 'value="1"'; } ?> class="is_done" /></td>
-        <td><?php echo htmlspecialchars(observations($socio['chargebee_id'])) ?></td>
+        <td data-type="checkbox"></td>
+        <td data-type="textarea" data-value="<?php echo addslashes(htmlspecialchars(observations($socio['chargebee_id']))) ?>"></td>
     </tr>
     <?php endforeach; ?>
 	</tbody>
