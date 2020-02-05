@@ -118,24 +118,6 @@ td,th { font-size: 75%; }
             <th data-field="observations" data-escape="true" data-searchable="true" data-editable="true">Observations</td>
 		</tr>
 	</thead>
-	<tbody>
-    <?php foreach($socios as $socio) : ?>
-    <tr class="socio" id="<?php echo $socio['chargebee_id'] ?>">
-		<td class="bs-checkbox"><input data-index="<?php echo $socio['chargebee_id'] ?>" name="btSelectItem" type="checkbox"></td>
-        <td><?php echo $socio['chargebee_id'] ?></td>
-        <td><?php echo $socio['email'] ?></td>
-        <td><?php echo $socio['firstname'] ?> <?php echo $socio['lastname'] ?></td>
-        <td><?php echo $socio['billing_period_unit'] ?></td> 
-        <td><?php echo date('Y-m-d', $socio['next_billing_at']/1000) ?></td>
-        <td><?php echo date('Y-m', $socio['card_expiry']/1000) ?></td>
-        <td><?php echo $socio['amount'] ?> €</td>
-        <td><?php echo format_phone($socio['phone']) ?></td>
-        <td><a href="<?php echo str_replace('https://lemediatv.fr', 'https://www.lemediatv.fr', $socio['updateCardUrl']) ?>" target="_blank">url</a></td>
-        <td data-type="checkbox"></td>
-        <td data-type="textarea" data-value="<?php echo addslashes(htmlspecialchars(observations($socio['chargebee_id']))) ?>"></td>
-    </tr>
-    <?php endforeach; ?>
-	</tbody>
 </table>
 </div>
     <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-db44b196776521ea816683afab021f757616c80860d31da6232dedb8d7cc4862.js"></script>
