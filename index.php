@@ -100,8 +100,8 @@ td,th { font-size: 75%; }
              data-page-size="100"
              data-url="get.php"
              data-id-field="id"
-             data-editable-emptytext="Default empty text."
-             data-editable-url="test.php">
+             data-editable-url="save.php"
+             data-editable-pk="1">
 	<thead>
 		<tr>
 			<th data-field="state" data-checkbox="true"></th>
