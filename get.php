@@ -33,7 +33,7 @@ $records = json_decode(file_get_contents('done.json'), true);
 
 $output = [];
 
-foreach($records as $socio)
+foreach($socios as $socio)
 {
     $entry = [];
     $entry['id'] = $socio['chargebee_id'];
