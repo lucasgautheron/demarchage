@@ -150,7 +150,8 @@ $(function() {
       }, {
         field: 'id',
         title: 'ID',
-        sortable: false,
+        visible: false,
+        sortable: false
       }, {
         field: 'id',
         title: 'ID',
