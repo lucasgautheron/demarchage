@@ -138,6 +138,13 @@ var $table = $('#table');
 $(function() {
     $table.bootstrapTable({
       idField: 'id',
+      toggle: 'table',
+      filerControl: true,
+      showExport: true,
+      toolbar: "#toolbar",
+      pagination: true,
+      pageSize: 100,
+      url: "get.php",
       columns: [{
         field: 'state',
         title: '',
@@ -211,7 +218,6 @@ $(function() {
         }
       }
       ],
-      data: data
     })
   })
 
