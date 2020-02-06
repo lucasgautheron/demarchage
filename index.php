@@ -88,8 +88,7 @@ td,th { font-size: 75%; }
 		</select>
 </div>
 
-<table id="table" 
-			 data-toggle="table"
+<table id="table"
              data-search="true"
 			 data-filter-control="true" 
 			 data-show-export="true"
@@ -132,7 +131,6 @@ td,th { font-size: 75%; }
 <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/filter-control/bootstrap-table-filter-control.js'></script>
   
       <script id="rendered-js" >
-//exporte les données sélectionnées
 var $table = $('#table');
 
 $(function() {
@@ -248,7 +246,6 @@ $('#table').on('editable-save.bs.table', function(e, field, row, oldValue, $el){
 
        data: {field: field, row: row}
    });
-    // write an ajax call to post back the values to your database
 })
 
 var trBoldBlue = $("table");
@@ -256,33 +253,6 @@ var trBoldBlue = $("table");
 $(trBoldBlue).on("click", "tr", function () {
   $(this).toggleClass("bold-blue");
 });
-
-  $("#save").click(function(event) {
-    $("#save").attr("disabled", "disabled");
-    $("#save").val("Enregistrement en cours...");
-
-    entries = [];
-    
-    $(".socio").each(function() {
-        var chargebee_id = $(this).attr('id');
-        var checked = $(this).find("input[type='checkbox'].is_done").is(':checked');
-        var observations = $(this).find("textarea").val();
-        
-       if (checked || observations)
-       {
-           entries.push({id: chargebee_id, done: checked, observations: observations});
-       }
-    });
-
-    console.log(entries);
-
-    $.post("save.php", {data: entries}, function(data) {
-      console.log(data);
-      $("#save").val("Enregistrer");
-      $("#save").prop('disabled', false);
-    }).fail(function(s) { console.log("fail", s); });
-  });
-//# sourceURL=pen.js
     </script>
 </body>
 
