@@ -3,7 +3,6 @@ set_time_limit(4000);
 
 // Connect to gmail
 $hostname = '{imap.ionos.fr:993/ssl/novalidate-cert}INBOX';
-$password = file_get_contents('email_pwd');
 $email = $_GET['email'];
 
 $users = [
@@ -36,6 +35,7 @@ function get_emails($from, $hostname, $username, $password)
 $emails = [];
 foreach($users as $user)
 {
+    print_r($user);
     $emails[$user[0]] = get_emails($email, $hostname, $user[0], $user[1]);   
 }
 
