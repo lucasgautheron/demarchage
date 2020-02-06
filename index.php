@@ -142,6 +142,13 @@ $(function () {
   });
 });
 
+$('#table').on('editable-save.bs.table', function(e, field, row, oldValue, $el){
+    console.log(field);
+    console.log(row);
+    console.log(oldValue);
+    // write an ajax call to post back the values to your database
+})
+
 var trBoldBlue = $("table");
 
 $(trBoldBlue).on("click", "tr", function () {
