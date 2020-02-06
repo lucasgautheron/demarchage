@@ -114,8 +114,8 @@ td,th { font-size: 75%; }
             <th data-field="montant" data-sortable="true">Montant</td>
             <th data-field="telephone">Téléphone</td>
             <th data-escape="false" data-searchable="false" date-field="url">URL</td>
-            <th data-field="done" data-searchable="false" date-editable="true">Fait</td>
-            <th data-field="observations" data-escape="true" data-searchable="true" data-editable="true" data-editable-type="textarea">Observations</td>
+            <th data-field="done" data-searchable="false" date-editable="true" data-checkbox="true">Fait</td>
+            <th data-field="observations" data-escape="true" data-searchable="true" data-editable="true">Observations</td>
 		</tr>
 	</thead>
 </table>
