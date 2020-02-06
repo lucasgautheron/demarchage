@@ -44,7 +44,8 @@ foreach($socios as $socio)
     $entry['expirationcb'] = date('Y-m', $socio['card_expiry']/1000);
     $entry['montant'] = $socio['amount'];
     $entry['telephone'] = format_phone($socio['phone']);
-    $entry['url'] = str_replace('https://lemediatv.fr', 'https://www.lemediatv.fr', $socio['updateCardUrl']);
+    $url = str_replace('https://lemediatv.fr', 'https://www.lemediatv.fr', $socio['updateCardUrl']);
+    $entry['url'] = '<a href="' . $url . '" target="_blank">URL</a>';
     $entry['done'] = is_done($socio['chargebee_id']);
     $entry['observations'] = observations($socio['chargebee_id']);
     $output[] = $entry;
