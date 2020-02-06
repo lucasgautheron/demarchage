@@ -208,7 +208,7 @@ $(function() {
           type: 'select',
           source: [
               {value: 0, text: 'Non'},
-              {value: 1, text: 'Appelé'},
+              {value: 1, text: 'Oui'},
               {value: 2, text: 'Refus'}
           ]
         }
