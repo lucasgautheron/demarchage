@@ -62,7 +62,7 @@ foreach($users as $user)
         $data['from'] = $email['header']->fromaddress;
         $data['to'] = $email['header']->toaddress;
         $data['date'] = $email['header']->date;
-        $data['title'] = $email['subject'];
+        $data['title'] = quoted_printable_decode($email['subject']);
         $data['message'] = quoted_printable_decode($email['body']);
         $emails[] = $data;
     }
@@ -183,7 +183,7 @@ $(function() {
         searchable: true
       }
       ],
-      data: <?php echo json_encode(utf8ize($emails)) ?>
+      data: <?php echo json_encode($emails) ?>
     })
   })
 
