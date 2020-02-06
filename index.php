@@ -78,7 +78,7 @@ td,th { font-size: 75%; }
 
 <h2>Démarchage téléphonique</h2>
 
-<input type="button" name="save" id="save" value="Enregistrer" />
+<!--<input type="button" name="save" id="save" value="Enregistrer" />-->
 
 <div id="toolbar">
 		<select class="form-control">
