@@ -183,7 +183,7 @@ $(function() {
         searchable: true
       }
       ],
-      data: <?php json_encode(utf8ize($emails)) ?>
+      data: <?php echo json_encode(utf8ize($emails)) ?>
     })
   })
 
