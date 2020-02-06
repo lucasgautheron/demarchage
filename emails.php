@@ -3,7 +3,7 @@ set_time_limit(4000);
 
 // Connect to gmail
 $hostname = '{imap.ionos.fr:993/ssl/novalidate-cert}INBOX';
-$email = $_GET['email'];
+$from = $_GET['email'];
 
 $users = [
     ['question@lemediatv.fr', trim(file_get_contents('questions_pwd'))],
@@ -55,7 +55,7 @@ function utf8ize($d) {
 $emails = [];
 foreach($users as $user)
 {
-    $tmp = get_emails($email, $hostname, $user[0], $user[1]);
+    $tmp = get_emails($from, $hostname, $user[0], $user[1]);
     foreach($tmp as $email)
     {
         $data = [];
@@ -67,8 +67,6 @@ foreach($users as $user)
         $emails[] = $data;
     }
 }
-
-print_r($emails);
 
 ?>
 
@@ -115,7 +113,7 @@ td,th { font-size: 75%; }
 <body translate="no" >
   <div class="container">
 
-<h2>E-mails reçus de <?php echo htmlspecialchars($_GET['email']); ?></h2>
+<h2>E-mails reçus de <?php echo htmlspecialchars(from); ?></h2>
 
 <div id="toolbar">
 		<select class="form-control">
@@ -224,6 +222,8 @@ $(trBoldBlue).on("click", "tr", function () {
   $(this).toggleClass("bold-blue");
 });
     </script>
+
+<?php echo json_last_error(); ?>
 </body>
 
 </html>
