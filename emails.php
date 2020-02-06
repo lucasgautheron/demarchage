@@ -113,7 +113,7 @@ td,th { font-size: 75%; }
 <body translate="no" >
   <div class="container">
 
-<h2>E-mails reçus de <?php echo htmlspecialchars(from); ?></h2>
+<h2>E-mails reçus de <?php echo htmlspecialchars($from); ?></h2>
 
 <div id="toolbar">
 		<select class="form-control">
