@@ -16,6 +16,11 @@ function get_emails($from, $hostname, $username, $password)
     imap_last_error());
 
     $emails = imap_search($inbox,'FROM "'.$from.'"', SE_FREE, "UTF-8");
+
+    if (!$emails) {
+        return [];
+    }
+
     $emails = array_reverse($emails);
     $output = '';
 
@@ -30,6 +35,21 @@ function get_emails($from, $hostname, $username, $password)
     }
 
     return $collection;
+}
+
+function utf8ize($d) {
+    if (is_array($d)) 
+        foreach ($d as $k => $v) 
+            $d[$k] = utf8ize($v);
+
+     else if(is_object($d))
+        foreach ($d as $k => $v) 
+            $d->$k = utf8ize($v);
+
+     else 
+        return utf8_encode($d);
+
+    return $d;
 }
 
 $emails = [];
@@ -165,7 +185,7 @@ $(function() {
         searchable: true
       }
       ],
-      data: <?php json_encode($emails) ?>
+      data: <?php json_encode(utf8ize($emails)) ?>
     })
   })
 
