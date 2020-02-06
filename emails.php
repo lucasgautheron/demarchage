@@ -6,8 +6,8 @@ $hostname = '{imap.ionos.fr:993/ssl/novalidate-cert}INBOX';
 $email = $_GET['email'];
 
 $users = [
-    ['question@lemediatv.fr', file_get_contents('questions_pwd')],
-    ['bonjour@lemediatv.fr', file_get_contents('bonjour_pwd')]
+    ['question@lemediatv.fr', trim(file_get_contents('questions_pwd'))],
+    ['bonjour@lemediatv.fr', trim(file_get_contents('bonjour_pwd'))]
 ];
 
 function get_emails($from, $hostname, $username, $password)
