@@ -39,7 +39,7 @@ foreach($users as $user)
     foreach($tmp as $email)
     {
         $data = [];
-        $data['from'] = $email['header']fromadress;
+        $data['from'] = $email['header']->fromadress;
         $data['to'] = $email['header']->toadress;
         $data['date'] = $email['header']->date;
         $data['title'] = $email['subject'];
