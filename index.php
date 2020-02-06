@@ -153,11 +153,6 @@ $(function() {
         visible: false,
         sortable: false
       }, {
-        field: 'id',
-        title: 'ID',
-        sortable: false,
-        editable: false
-      }, {
         field: 'email',
         title: 'E-mail',
         sortable: false,
