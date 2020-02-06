@@ -37,7 +37,8 @@ foreach($socios as $socio)
 {
     $entry = [];
     $entry['id'] = $socio['chargebee_id'];
-    $entry['email'] = $socio['email'];
+//    $entry['email'] = $socio['email'];
+    $entry['email'] = '<a href="emails.php?email=' . $socio['email'] . '" target="_blank">' . $socio['email'] . '</a>';
     $entry['nom'] = $socio['firstname'] . " " . $socio['lastname'];
     $entry['facturation'] = $socio['billing_period_unit'];
     $entry['echeance'] = date('Y-m-d', $socio['next_billing_at']/1000);
