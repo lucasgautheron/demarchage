@@ -179,7 +179,7 @@ $(function() {
         sortable: true,
         editable: false
       }, {
-        field: 'expiration',
+        field: 'expirationcb',
         title: 'Expiration',
         sortable: true,
         editable: false
