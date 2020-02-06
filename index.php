@@ -102,7 +102,7 @@ td,th { font-size: 75%; }
              data-id-field="id"
              data-editable-url="save.php"
              data-editable-pk="1">
-	<thead>
+<!--	<thead>
 		<tr>
 			<th data-field="state" data-checkbox="true"></th>
             <th data-field="id">ID</th>
@@ -114,10 +114,10 @@ td,th { font-size: 75%; }
             <th data-field="montant" data-sortable="true">Montant</td>
             <th data-field="telephone">Téléphone</td>
             <th data-escape="false" data-searchable="false" date-field="url">URL</td>
-            <th data-field="done" data-searchable="false" date-editable="true" data-checkbox="true">Fait</td>
+            <th data-field="done" data-searchable="false" date-editable="true">Fait</td>
             <th data-field="observations" data-escape="true" data-searchable="true" data-editable="true">Observations</td>
 		</tr>
-	</thead>
+	</thead>-->
 </table>
 </div>
     <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-db44b196776521ea816683afab021f757616c80860d31da6232dedb8d7cc4862.js"></script>
@@ -134,6 +134,87 @@ td,th { font-size: 75%; }
       <script id="rendered-js" >
 //exporte les données sélectionnées
 var $table = $('#table');
+
+$(function() {
+    $table.bootstrapTable({
+      idField: 'id',
+      columns: [{
+        field: 'state',
+        title: '',
+        checkbox: true
+      }, {
+        field: 'id',
+        title: 'ID',
+        sortable: false,
+      }, {
+        field: 'id',
+        title: 'ID',
+        sortable: false,
+        editable: false
+      }, {
+        field: 'email',
+        title: 'E-mail',
+        sortable: false,
+        editable: false,
+        searchable: true
+      }, {
+        field: 'nom',
+        title: 'Nom',
+        sortable: false,
+        editable: false,
+        searchable: true
+      }, {
+        field: 'facturation',
+        title: 'Facturation',
+        sortable: true,
+        editable: false
+      }, {
+        field: 'echeance',
+        title: 'Échéance',
+        sortable: true,
+        editable: false
+      }, {
+        field: 'expiration',
+        title: 'Expiration',
+        sortable: true,
+        editable: false
+      }, {
+        field: 'montant',
+        title: 'Montant',
+        sortable: true,
+        editable: false
+      }, {
+        field: 'telephone',
+        title: 'Téléphone',
+        sortable: false,
+        editable: false,
+        searchable: true
+      }, {
+        field: 'url',
+        title: 'URL',
+        sortable: false,
+        editable: false,
+        escape: false
+      }, {
+        field: 'done',
+        title: 'Traité',
+        sortable: false,
+        editable: {
+          type: 'checkbox'
+        }
+      }, {
+        field: 'observations',
+        title: 'Observations',
+        sortable: false,
+        editable: {
+          type: 'textarea'
+        }
+      }
+      ],
+      data: data
+    })
+  })
+
 $(function () {
   $('#toolbar').find('select').change(function () {
     $table.bootstrapTable('refreshOptions', {
