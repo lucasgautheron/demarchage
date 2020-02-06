@@ -205,7 +205,12 @@ $(function() {
         title: 'Traité',
         sortable: false,
         editable: {
-          type: 'checkbox'
+          type: 'select',
+          source: [
+              {value: 0, text: 'Non'},
+              {value: 1, text: 'Appelé'},
+              {value: 2, text: 'Refus'}
+          ]
         }
       }, {
         field: 'observations',
