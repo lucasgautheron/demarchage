@@ -29,9 +29,10 @@ $records = json_decode(file_get_contents('done.json'), true);
 
   <meta charset="UTF-8">
   
-<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css'>
-<link rel='stylesheet' href='https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' />
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css' />
+<link rel='stylesheet' href='https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css' />
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css' />
   
 <style>
 .container {
@@ -112,6 +113,7 @@ td,th { font-size: 75%; }
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/editable/bootstrap-table-editable.js'></script>
@@ -124,11 +126,11 @@ var $table = $('#table');
 
 $(function() {
     var traitement = [
-              {value: "mae", text: 'Mail à envoyer'},
-              {value: "me", text: 'Mail envoyé'},
-              {value: "recontacter", text: 'À recontacter plus tard'},
-              {value: "mdf", text: 'Adresse e-mail injoignable'},
-              {value: "nna", text: 'Numéro non attribué'}
+              {"mae": 'Mail à envoyer'},
+              {"me": 'Mail envoyé'},
+              {"recontacter": 'À recontacter plus tard'},
+              {"mdf": 'Adresse e-mail injoignable'},
+              {"nna": 'Numéro non attribué'}
           ];
 
     $table.bootstrapTable({
@@ -140,6 +142,7 @@ $(function() {
       pagination: true,
       pageSize: 100,
       url: "get.php",
+      showSearchClearButton: true,
       columns: [{
         field: 'state',
         title: '',
