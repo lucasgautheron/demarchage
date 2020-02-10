@@ -124,8 +124,7 @@ td,th { font-size: 75%; }
       <script id="rendered-js" >
 var $table = $('#table');
 
-$(function() {
-    var traitement = [
+traitement = [
               {"mae": 'Mail à envoyer'},
               {"me": 'Mail envoyé'},
               {"recontacter": 'À recontacter plus tard'},
@@ -133,6 +132,7 @@ $(function() {
               {"nna": 'Numéro non attribué'}
           ];
 
+$(function() {
     $table.bootstrapTable({
       idField: 'id',
       toggle: 'table',
