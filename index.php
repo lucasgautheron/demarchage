@@ -236,6 +236,7 @@ $(function() {
         field: 'datetraitement',
         title: 'Date',
         filterControl: 'datepicker',
+        filterDatepickerOptions: {"autoclose":true, "clearBtn": true, "todayHighlight": true},
         sortable: true,
         editable: {
             type: 'date'
