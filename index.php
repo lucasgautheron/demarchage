@@ -143,6 +143,7 @@ $(function() {
       pageSize: 100,
       url: "get.php",
       showSearchClearButton: true,
+      filterControl: true,
       columns: [{
         field: 'state',
         title: '',
