@@ -1,16 +1,4 @@
 <?php
-function is_done($chargebee_id)
-{
-    global $records;
-
-    if (@array_key_exists($chargebee_id, $records))
-    {
-        return $records[$chargebee_id]['done'] == "true";
-    }
-    return false;
-    
-}
-
 function get_field($chargebee_id, $field)
 {
     global $records;
@@ -20,16 +8,6 @@ function get_field($chargebee_id, $field)
         return $records[$chargebee_id][$field];
     }
     return false;
-}
-
-function observations($chargebee_id)
-{
-    global $records;
-    if (@array_key_exists($chargebee_id, $records))
-    {
-        return $records[$chargebee_id]['observations'];
-    }
-    return '';
 }
 
 function format_phone($number)

@@ -1,24 +1,13 @@
 <?php
-function is_done($chargebee_id)
+function get_field($chargebee_id, $field)
 {
     global $records;
 
     if (@array_key_exists($chargebee_id, $records))
     {
-        return $records[$chargebee_id]['done'] == "true";
+        return $records[$chargebee_id][$field];
     }
     return false;
-    
-}
-
-function observations($chargebee_id)
-{
-    global $records;
-    if (@array_key_exists($chargebee_id, $records))
-    {
-        return $records[$chargebee_id]['observations'];
-    }
-    return '';
 }
 
 function format_phone($number)
@@ -204,7 +193,7 @@ $(function() {
           type: 'select',
           source: [
               {value: "mae", text: 'Mail à envoyer'},
-              {value: "me", text: 'Mail envoyé},
+              {value: "me", text: 'Mail envoyé'},
               {value: "recontacter", text: 'À recontacter plus tard'},
               {value: "mdf", text: 'Adresse e-mail injoignable'},
               {value: "nna", text: 'Numéro non attribué'}
