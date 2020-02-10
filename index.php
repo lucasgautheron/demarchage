@@ -198,7 +198,8 @@ $(function() {
               {value: "mdf", text: 'Adresse e-mail injoignable'},
               {value: "nna", text: 'Numéro non attribué'}
           ]
-        }, {
+        }
+      }, {
         field: 'done',
         title: 'Retour',
         sortable: false,
