@@ -123,6 +123,14 @@ td,th { font-size: 75%; }
 var $table = $('#table');
 
 $(function() {
+    var traitement = [
+              {value: "mae", text: 'Mail à envoyer'},
+              {value: "me", text: 'Mail envoyé'},
+              {value: "recontacter", text: 'À recontacter plus tard'},
+              {value: "mdf", text: 'Adresse e-mail injoignable'},
+              {value: "nna", text: 'Numéro non attribué'}
+          ];
+
     $table.bootstrapTable({
       idField: 'id',
       toggle: 'table',
@@ -192,6 +200,7 @@ $(function() {
         sortable: false,
         searchable: true,
         filterControl: 'select',
+        filterData: 'var:traitement',
         editable: {
           type: 'select',
           source: [
