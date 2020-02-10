@@ -190,6 +190,7 @@ $(function() {
         field: 'traitement',
         title: 'Statut',
         sortable: false,
+        searchable: true,
         editable: {
           type: 'select',
           source: [
@@ -203,6 +204,7 @@ $(function() {
       }, {
         field: 'done',
         title: 'Retour',
+        searchable: true,
         sortable: false,
         editable: {
           type: 'select',
