@@ -157,7 +157,8 @@ $(function() {
         field: 'facturation',
         title: 'Facturation',
         sortable: true,
-        editable: false
+        editable: false,
+        visible: false
       }, {
         field: 'echeance',
         title: 'Échéance',
