@@ -191,6 +191,7 @@ $(function() {
         title: 'Statut',
         sortable: false,
         searchable: true,
+        filterControl: 'select',
         editable: {
           type: 'select',
           source: [
@@ -206,6 +207,7 @@ $(function() {
         title: 'Retour',
         searchable: true,
         sortable: false,
+        filterControl: 'select',
         editable: {
           type: 'select',
           source: [
@@ -220,6 +222,7 @@ $(function() {
       }, {
         field: 'datetraitement',
         title: 'Date',
+        filterControl: 'datepicker',
         sortable: true,
         editable: {
             type: 'date'
