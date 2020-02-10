@@ -11,6 +11,17 @@ function is_done($chargebee_id)
     
 }
 
+function get_field($chargebee_id, $field)
+{
+    global $records;
+
+    if (@array_key_exists($chargebee_id, $records))
+    {
+        return $records[$chargebee_id][$field];
+    }
+    return false;
+}
+
 function observations($chargebee_id)
 {
     global $records;
@@ -47,8 +58,10 @@ foreach($socios as $socio)
     $entry['telephone'] = format_phone($socio['phone']);
     $url = str_replace('https://lemediatv.fr', 'https://www.lemediatv.fr', $socio['updateCardUrl']);
     $entry['url'] = '<a href="' . $url . '" target="_blank">URL</a>';
-    $entry['done'] = is_done($socio['chargebee_id']);
-    $entry['observations'] = observations($socio['chargebee_id']);
+    $entry['done'] = get_field($socio['chargebee_id'], 'done');
+    $entry['observations'] = get_field($socio['chargebee_id'], 'observations');
+    $entry['traitement'] = get_field($socio['chargebee_id'], 'traitement');
+    $entry['datetraitement'] = get_field($socio['chargebee_id'], 'datetraitement');
     $output[] = $entry;
 }
 

@@ -197,16 +197,39 @@ $(function() {
         editable: false,
         escape: false
       }, {
-        field: 'done',
-        title: 'Traité',
+        field: 'traitement',
+        title: 'Statut',
         sortable: false,
         editable: {
           type: 'select',
           source: [
-              {value: 0, text: 'Non'},
-              {value: 1, text: 'Oui'},
-              {value: 2, text: 'Refus'}
+              {value: "mae", text: 'Mail à envoyer'},
+              {value: "me", text: 'Mail envoyé},
+              {value: "recontacter", text: 'À recontacter plus tard'},
+              {value: "mdf", text: 'Adresse e-mail injoignable'},
+              {value: "nna", text: 'Numéro non attribué'}
           ]
+        }, {
+        field: 'done',
+        title: 'Retour',
+        sortable: false,
+        editable: {
+          type: 'select',
+          source: [
+              {value: "ok", text: 'OK'},
+              {value: "hesite", text: 'Hésite'},
+              {value: "refus_drama", text: 'Refus (Drames)'},
+              {value: "refus_solv", text: 'Refus (Solvabilité)'},
+              {value: "refus_temps", text: 'Refus (Manque de temps)'},
+              {value: "refus_interet", text: 'Refus (Plus d\'intérêt)'}
+          ]
+        }
+      }, {
+        field: 'datetraitement',
+        title: 'Date',
+        sortable: true,
+        editable: {
+            type: 'date'
         }
       }, {
         field: 'observations',
