@@ -5,7 +5,9 @@ function get_field($chargebee_id, $field)
 
     if (@array_key_exists($chargebee_id, $records))
     {
-        return $records[$chargebee_id][$field];
+        return array_key_exists($field, $records[$chargebee_id]) ? 
+            $records[$chargebee_id][$field] :
+            null;
     }
     return false;
 }
