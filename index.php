@@ -138,7 +138,8 @@ retour = {
     "refus_drama": 'Refus (Drames)',
     "refus_solv": 'Refus (Solvabilité)',
     "refus_temps": 'Refus (Manque de temps)',
-    "refus_interet": 'Refus (Plus d\'intérêt)'
+    "refus_interet": 'Refus (Plus d\'intérêt)',
+    "repondeur": "Répondeur"
 };
 
 $(function() {
@@ -239,7 +240,8 @@ $(function() {
               {value: "refus_drama", text: 'Refus (Drames)'},
               {value: "refus_solv", text: 'Refus (Solvabilité)'},
               {value: "refus_temps", text: 'Refus (Manque de temps)'},
-              {value: "refus_interet", text: 'Refus (Plus d\'intérêt)'}
+              {value: "refus_interet", text: 'Refus (Plus d\'intérêt)'},
+              {value: "repondeur", text: 'Répondeur'}
           ]
         }
       }, {
