@@ -9,7 +9,7 @@ function get_field($chargebee_id, $field)
             $records[$chargebee_id][$field] :
             null;
     }
-    return false;
+    return null;
 }
 
 function format_phone($number)
