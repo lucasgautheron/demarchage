@@ -23,7 +23,7 @@ $records = json_decode(file_get_contents('done.json'), true);
 ?>
 
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="fr" >
 
 <head>
 
