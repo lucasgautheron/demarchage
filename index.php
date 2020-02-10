@@ -124,13 +124,22 @@ td,th { font-size: 75%; }
       <script id="rendered-js" >
 var $table = $('#table');
 
-traitement = [
-              {"mae": 'Mail à envoyer'},
-              {"me": 'Mail envoyé'},
-              {"recontacter": 'À recontacter plus tard'},
-              {"mdf": 'Adresse e-mail injoignable'},
-              {"nna": 'Numéro non attribué'}
-          ];
+traitement = {
+    "mae": 'Mail à envoyer',
+    "me": 'Mail envoyé',
+    "recontacter": 'À recontacter plus tard',
+    "mdf": 'Adresse e-mail injoignable',
+    "nna": 'Numéro non attribué'
+};
+
+retour = {
+    "ok": 'OK',
+    "hesite": 'Hésite',
+    "refus_drama": 'Refus (Drames)',
+    "refus_solv": 'Refus (Solvabilité)',
+    "refus_temps": 'Refus (Manque de temps)',
+    "refus_interet": 'Refus (Plus d\'intérêt)'
+};
 
 $(function() {
     $table.bootstrapTable({
@@ -221,6 +230,7 @@ $(function() {
         searchable: true,
         sortable: false,
         filterControl: 'select',
+        filterData: 'var:retour',
         editable: {
           type: 'select',
           source: [
