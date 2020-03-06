@@ -79,7 +79,7 @@ td,th { font-size: 75%; }
 </div>
 
 <table id="table"
-             data-search="true"
+<!--             data-search="true"
 			 data-filter-control="true" 
 			 data-show-export="true"
 			 data-click-to-select="true"
@@ -90,7 +90,9 @@ td,th { font-size: 75%; }
              data-url="get.php"
              data-id-field="id"
              data-editable-url="save.php"
-             data-editable-pk="1">
+             data-editable-pk="1"
+-->
+>
 <!--	<thead>
 		<tr>
 			<th data-field="state" data-checkbox="true"></th>
@@ -175,6 +177,12 @@ $(function() {
         sortable: false,
         editable: false,
         searchable: true
+      }, {
+        field: 'age',
+        title: 'Âge',
+        sortable: true,
+        editable: false,
+        searchable: false
       }, {
         field: 'facturation',
         title: 'Facturation',

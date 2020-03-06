@@ -42,6 +42,7 @@ foreach($socios as $socio)
     $entry['observations'] = get_field($socio['chargebee_id'], 'observations');
     $entry['traitement'] = get_field($socio['chargebee_id'], 'traitement');
     $entry['datetraitement'] = get_field($socio['chargebee_id'], 'datetraitement');
+    $entry['age'] = $socio['age'];
     $output[] = $entry;
 }
 
