@@ -16,7 +16,6 @@ function get_socio($chargebee_id, $socios)
     return null;
 }
 
-print_r($_POST);
 $send = false;
 if (!empty($_POST['id']))
 {
