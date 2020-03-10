@@ -37,7 +37,7 @@ if (!empty($_POST['id']))
     $template = $_POST['template'];
     $subject = $templates[$template][1];
 
-    $cmd = "cd emails && node send.js --production=test --displayName=\"$displayName\" --email=\"{$socio['email']}\" --updateCardUrl=\"{$socio['updateCardUrl']}\" --author=\"$author\" --from=\"{$author_email}\" --template=\"{$template}\" --subject=\""$subject\"";
+    $cmd = "cd emails && node send.js --production=test --displayName=\"$displayName\" --email=\"{$socio['email']}\" --updateCardUrl=\"{$socio['updateCardUrl']}\" --author=\"$author\" --from=\"{$author_email}\" --template=\"{$template}\" --subject=\"$subject\"";
     exec($cmd);
 }
 ?>
