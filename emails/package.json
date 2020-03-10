@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@sentry/node": "^4.0.6",
+    "axios": "^0.18.0",
+    "date-fns": "^1.30.1",
+    "dotenv": "^6.0.0",
+    "drupal-hash": "^1.0.4",
+    "email-templates": "^5.0.2",
+    "git-rev-sync": "^1.12.0",
+    "i18n-iso-countries": "^3.7.8",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.11",
+    "mysql2": "^1.6.1",
+    "pug": "^2.0.3",
+    "sequelize": "^4.38.1",
+    "slug": "^0.9.1",
+    "yargs": "^15.3.0"
+  }
+}
