@@ -1,0 +1,25 @@
+extends ../layouts/basic.pug
+
+block content
+  p Bonjour #{name},
+
+  p Je suis #{signature} de la webTV Le Média.
+
+  p Je me permets de vous contacter car il semblerait que les informations bancaires avec lesquelles vous aviez souscrit ont expiré.
+
+  p
+    | Je vous envoie 
+    a(href=link) ce lien
+    |  qui vous permettra de renouveler votre moyen de paiement et de continuer à soutenir Le Média TV, notre outil commun de résistance médiatique.
+
+  p Grâce à vous, une trentaine de travailleurs (journalistes, monteurs, cadreurs, etc.) peuvent exercer leur métier en toute indépendance. Vous nous avez permis de proposer une information différente au plus grand nombre, suivie par plus de 500 000 abonnés sur nos réseaux, pour plus de 100 millions de vues.
+ 
+  p
+    | Je vous invite également à consulter nos émissions sur le nouveau site du Média : 
+    a(href='https://www.lemediatv.fr/') lemediatv.fr
+
+  p Nous sommes à votre disposition par retour de mail pour tout complément d'information.
+
+  p Toute l'équipe du Média TV vous remercie de votre soutien. Bien à vous,
+
+  p #{signature}
