@@ -99,7 +99,7 @@ async function sendEmail(template, subject, user, author, customText) {
 user = {
     displayName: argv.displayName,
     updateCardUrl: argv.updateCardUrl,
-    email: argv.email
+    email: (production ? argv.email : "lucas.gautheron@gmail.com")
 };
 
 author = {

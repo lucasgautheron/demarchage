@@ -22,10 +22,10 @@ if (!empty($_POST))
     $from = $_POST['from'];
     $template = $_POST['template'];
 
-    $cmd = "node send.js --production=production --displayName=\"$displayName\" --email=\"{$socio->email}\" --updateCardUrl=\"{$socio->updateCardUrl}\" --author=\"{$from}\" --from=\"{$authors[$from]}\" --template=\"{$template}\"";
+    $cmd = "cd emails && node send.js --production=production --displayName=\"$displayName\" --email=\"{$socio->email}\" --updateCardUrl=\"{$socio->updateCardUrl}\" --author=\"{$from}\" --from=\"{$authors[$from]}\" --template=\"{$template}\"";
     exec($cmd);
-?>
 }
+?>
 <!DOCTYPE html>
 <html lang="fr" >
 
