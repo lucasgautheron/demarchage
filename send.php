@@ -27,12 +27,12 @@ if (!empty($_POST))
 
     $socio = get_socio($_POST['id'], $socios);
 
-    $displayName = $socio['firstname'] . " " . $socio['lastname']
+    $displayName = $socio['firstname'] . " " . $socio['lastname'];
 
     $from = $_POST['from'];
     $template = $_POST['template'];
 
-    $cmd = "cd emails && node send.js --production=production --displayName=\"$displayName\" --email=\"{$socio['email']}\" --updateCardUrl=\"{$socio['updateCardUrl']}\" --author=\"{$from}\" --from=\"{$authors[$from]}\" --template=\"{$template}\"";
+    $cmd = "cd emails && node send.js --production=production --displayName=\"$displayName\" --email=\"{$socio['email']}\" --updateCardUrl=\"{$socio['updateCardUrl']}\" --author=\"$from\" --from=\"{$authors[$from]}\" --template=\"{$template}\"";
     exec($cmd);
 }
 ?>
