@@ -16,8 +16,11 @@ function get_socio($chargebee_id, $socios)
     return null;
 }
 
-if (!empty($_POST))
+print_r($_POST);
+$send = false;
+if (!empty($_POST['id']))
 {
+    $send = true;
     $socios = json_decode(file_get_contents('ciblage.json'), true);
 
     $authors = [
@@ -33,7 +36,8 @@ if (!empty($_POST))
     $author_email = $authors[$author];
     $template = $_POST['template'];
 
-    $cmd = "cd emails && node send.js --production=production --displayName=\"$displayName\" --email=\"{$socio['email']}\" --updateCardUrl=\"{$socio['updateCardUrl']}\" --author=\"$author\" --from=\"{$author_email}\" --template=\"{$template}\"";
+    $cmd = "cd emails && node send.js --production=test --displayName=\"$displayName\" --email=\"{$socio['email']}\" --updateCardUrl=\"{$socio['updateCardUrl']}\" --author=\"$author\" --from=\"{$author_email}\" --template=\"{$template}\"";
+    echo $cmd;
     exec($cmd);
 }
 ?>
@@ -81,6 +85,9 @@ td,th { font-size: 75%; }
 
 <h2>Envoi e-mail</h2>
 
+<?php if ($send) : ?>
+<p>E-mail envoyé !</p>
+<?php else : ?>
 <form method="POST" action="send.php">
 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>" />
 <p>
@@ -96,4 +103,6 @@ td,th { font-size: 75%; }
 </select></p>
 <p><input type="submit" value="Envoyer" /></p>
 </form>
+<?php endif; ?>
+</div>
 </html>
