@@ -71,15 +71,18 @@ td,th { font-size: 75%; }
 <h2>Envoi e-mail</h2>
 
 <form method="POST" action="send.php">
-<input type="hidden" name="chargebee_id" value="<?php echo $_GET['chargebee_id'] ?> />
-<p><select name="author">
+<input type="hidden" name="chargebee_id" value="<?php echo $_GET['chargebee_id'] ?>" />
+<p>
+<select name="author">
     <option value="Katell">Katell</option>
     <option value="Thibault">Thibault</option>
-</select></p>
+</select>
+</p>
 <p><select name="template">
 <?php foreach($templates as $id => $template): ?>
     <option value="<?php echo $id ?>"><?php echo $template ?></option>
 <?php endforeach; ?>
 </select></p>
+<p><input type="submit" value="Envoyer" /></p>
 </form>
 </html>
