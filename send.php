@@ -6,6 +6,16 @@ $templates = [
     'mail-resiliation' => 'Résiliation'
 ];
 
+function get_socio($chargebee_id, $socios)
+{
+    foreach($socios as $socio)
+    {
+        if($socio['chargebee_id'] == $chargebee_id)
+            return $socio;
+    }
+    return null;
+}
+
 if (!empty($_POST))
 {
     $socios = json_decode(file_get_contents('ciblage.json'), true);
@@ -15,7 +25,7 @@ if (!empty($_POST))
       'Thibault' => 'thibault@lemediatv.fr'
     ];
 
-    $socio = $socios[$_POST['id']];
+    $socio = get_socio($_POST['id'], $socios);
 
     $displayName = $socio->firstname . " " . $socio->lastname;
 
