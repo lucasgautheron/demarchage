@@ -1,9 +1,9 @@
 <?php
 $templates = [
-    'mail-direct' => 'Conversation en direct',
-    'mail-repondeur' => 'Répondeur',
-    'mail-nna' => 'Numéro non-attribué',
-    'mail-resiliation' => 'Résiliation'
+    'mail-direct' => ['Conversation en direct', 'Renouvellement de votre cotisation au Média TV'],
+    'mail-repondeur' => ['Répondeur', 'Renouvellement de votre adhésion au Média TV'],
+    'mail-nna' => ['Numéro non-attribué', 'Renouvellement de votre adhésion au Média TV'],
+    'mail-resiliation' => ['Résiliation', 'Résiliation de votre adhsion au Média TV']
 ];
 
 function get_socio($chargebee_id, $socios)
@@ -35,9 +35,9 @@ if (!empty($_POST['id']))
     $author = $_POST['author'];
     $author_email = $authors[$author];
     $template = $_POST['template'];
+    $subject = $templates[$template][1];
 
-    $cmd = "cd emails && node send.js --production=test --displayName=\"$displayName\" --email=\"{$socio['email']}\" --updateCardUrl=\"{$socio['updateCardUrl']}\" --author=\"$author\" --from=\"{$author_email}\" --template=\"{$template}\"";
-    echo $cmd;
+    $cmd = "cd emails && node send.js --production=test --displayName=\"$displayName\" --email=\"{$socio['email']}\" --updateCardUrl=\"{$socio['updateCardUrl']}\" --author=\"$author\" --from=\"{$author_email}\" --template=\"{$template}\" --subject=\""$subject\"";
     exec($cmd);
 }
 ?>
@@ -98,7 +98,7 @@ td,th { font-size: 75%; }
 </p>
 <p><select name="template">
 <?php foreach($templates as $id => $template): ?>
-    <option value="<?php echo $id ?>"><?php echo $template ?></option>
+    <option value="<?php echo $id ?>"><?php echo $template[0] ?></option>
 <?php endforeach; ?>
 </select></p>
 <p><input type="submit" value="Envoyer" /></p>
