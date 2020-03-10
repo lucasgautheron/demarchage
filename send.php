@@ -15,7 +15,7 @@ if (!empty($_POST))
       'Thibault' => 'thibault@lemediatv.fr'
     ];
 
-    $socio = $socios[$_POST['chargebee_id']];
+    $socio = $socios[$_POST['id']];
 
     $displayName = $socio->firstname . " " . $socio->lastname;
 
@@ -71,7 +71,7 @@ td,th { font-size: 75%; }
 <h2>Envoi e-mail</h2>
 
 <form method="POST" action="send.php">
-<input type="hidden" name="chargebee_id" value="<?php echo $_GET['chargebee_id'] ?>" />
+<input type="hidden" name="id" value="<?php echo $_GET['id'] ?>" />
 <p>
 <select name="author">
     <option value="Katell">Katell</option>
