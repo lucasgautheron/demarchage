@@ -43,6 +43,7 @@ foreach($socios as $socio)
     $entry['traitement'] = get_field($socio['chargebee_id'], 'traitement');
     $entry['datetraitement'] = get_field($socio['chargebee_id'], 'datetraitement');
     $entry['age'] = $socio['age'];
+    $entry['action'] = '<a href="send.php?id=' . $socio['chargebee_id']. '"><span class="glyphicon glyphicon-envelope"></span></a>';
     $output[] = $entry;
 }
 

@@ -166,6 +166,12 @@ $(function() {
         visible: false,
         sortable: false
       }, {
+        field: 'action',
+        title: 'Action',
+        sortable: false,
+        editable: false,
+        searchable: true
+      }, {
         field: 'email',
         title: 'E-mail',
         sortable: false,

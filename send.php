@@ -73,12 +73,12 @@ td,th { font-size: 75%; }
 <form method="POST" action="send.php">
 <input type="hidden" name="chargebee_id" value="<?php echo $_GET['chargebee_id'] ?> />
 <p><select name="author">
-<option value="Katell">Katell</option>
-<option value="Thibault">Thibault</option>
+    <option value="Katell">Katell</option>
+    <option value="Thibault">Thibault</option>
 </select></p>
 <p><select name="template">
 <?php foreach($templates as $id => $template): ?>
-<option value="<?php echo $id ?>"><?php echo $template ?></option>
+    <option value="<?php echo $id ?>"><?php echo $template ?></option>
 <?php endforeach; ?>
 </select></p>
 </form>
