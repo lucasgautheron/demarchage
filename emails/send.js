@@ -42,24 +42,31 @@ const argv = require('yargs') // eslint-disable-line
     description: 'subject'
   }).argv
 
+
+const fs = require('fs');
+let mailjet = JSON.parse(fs.readFileSync('mailjet.json'));
+
+MAILJET_USER = mailjet['USER'];
+MAILJET_PASS = mailjet['PASS'];
+
 console.log(argv);
 
-production = argv.production === "production"
+production = argv.production === "production";
 
 const emailTemplate = new EmailTemplate({
   views: { root: path.join(__dirname, ".") },
   message: {
     from: '"' + argv.author + ' du Média" <' + argv.from + '>'
   },
-  preview: !production,
-  send: production,
+  preview: false,
+  send: true,
   transport: {
     host: "in-v3.mailjet.com",
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: process.env.MAILJET_USER,
-      pass: process.env.MAILJET_PASS
+      user: MAILJET_USER,
+      pass: MAILJET_PASS
     }
   }
 });
