@@ -36,7 +36,7 @@ $records = json_decode(file_get_contents('done.json'), true);
   
 <style>
 .container {
-	width: 1024px;
+	min-width: 1024px;
 	padding: 2em;
 }
 
