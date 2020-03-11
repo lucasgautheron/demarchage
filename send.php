@@ -6,6 +6,11 @@ $templates = [
     'mail-resiliation' => ['Résiliation', 'Résiliation de votre adhsion au Média TV']
 ];
 
+$authors = [
+  'Katell' => 'katell.gouello@lemediatv.fr',
+  'Thibault' => 'thibault@lemediatv.fr'
+];
+
 function get_socio($chargebee_id, $socios)
 {
     foreach($socios as $socio)
@@ -16,20 +21,15 @@ function get_socio($chargebee_id, $socios)
     return null;
 }
 
+$socios = json_decode(file_get_contents('ciblage.json'), true);
+$id = !empty($_GET['id']) ? $_GET['id'] : $_POST['id'];
+$socio = get_socio($_POST['id'], $socios);
+$displayName = $socio['firstname'] . " " . $socio['lastname'];
+
 $send = false;
 if (!empty($_POST['id']))
 {
     $send = true;
-    $socios = json_decode(file_get_contents('ciblage.json'), true);
-
-    $authors = [
-      'Katell' => 'katell@lemediatv.fr',
-      'Thibault' => 'thibault@lemediatv.fr'
-    ];
-
-    $socio = get_socio($_POST['id'], $socios);
-
-    $displayName = $socio['firstname'] . " " . $socio['lastname'];
 
     $author = $_POST['author'];
     $author_email = $authors[$author];
@@ -85,21 +85,22 @@ td,th { font-size: 75%; }
 <h2>Envoi e-mail</h2>
 
 <?php if ($send) : ?>
-<p>E-mail envoyé !</p>
+<p>E-mail envoyé à <?php echo $displayName ?>.</p>
 <?php else : ?>
+<p>Envoyer à <?php echo $displayName ?>.</p>
 <form method="POST" action="send.php">
 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>" />
 <p>
 <select name="author">
     <option value="Katell">Katell</option>
     <option value="Thibault">Thibault</option>
-</select>
+</select> Signature
 </p>
 <p><select name="template">
 <?php foreach($templates as $id => $template): ?>
     <option value="<?php echo $id ?>"><?php echo $template[0] ?></option>
 <?php endforeach; ?>
-</select></p>
+</select> Modèle</p>
 <p><input type="submit" value="Envoyer" /></p>
 </form>
 <?php endif; ?>

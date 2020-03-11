@@ -29,7 +29,7 @@ const argv = require('yargs') // eslint-disable-line
   .option('from', {
     alias: 'f',
     type: 'string',
-    description: 'user email'
+    description: 'author email'
   })
   .option('template', {
     alias: 't',
@@ -88,7 +88,7 @@ async function __send(template, to, subject, variables) {
 async function sendEmail(template, subject, user, author, customText) {
   __send(
     template,
-    [user.email, author.email],
+    user.email,
     subject,
     {
       title: subject,

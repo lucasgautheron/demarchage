@@ -194,33 +194,6 @@ $(function () {
 
   });
 });
-
-$('#table').on('editable-save.bs.table', function(e, field, row, oldValue, $el){
-    console.log(field);
-    console.log(row);
-    console.log(oldValue);
-
-    $.ajax({
-       type: "POST",
-       url: "save.php",
-       dataType: "json",
-       success: function (msg) {
-           if (msg) {
-               console.log(msg);
-           } else {
-               alert("Échec.");
-           }
-       },
-
-       data: {field: field, row: row}
-   });
-})
-
-var trBoldBlue = $("table");
-
-$(trBoldBlue).on("click", "tr", function () {
-  $(this).toggleClass("bold-blue");
-});
     </script>
 
 <?php echo json_last_error(); ?>
