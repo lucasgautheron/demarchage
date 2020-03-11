@@ -170,7 +170,7 @@ $(function() {
         title: 'Action',
         sortable: false,
         editable: false,
-        searchable: true
+        searchable: false
       }, {
         field: 'email',
         title: 'E-mail',
