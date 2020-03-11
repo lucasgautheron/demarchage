@@ -78,7 +78,18 @@ td,th { font-size: 75%; }
 		</select>
 </div>
 
-<table id="table">
+<table id="table" data-search="true"
+			 data-filter-control="true" 
+			 data-show-export="true"
+			 data-click-to-select="true"
+             data-escape="false"
+			 data-toolbar="#toolbar"
+             data-pagination="true"
+             data-page-size="100"
+             data-url="get.php"
+             data-id-field="id"
+             data-editable-url="save.php"
+             data-editable-pk="1">
 </table>
 </div>
     <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-db44b196776521ea816683afab021f757616c80860d31da6232dedb8d7cc4862.js"></script>
