@@ -23,7 +23,7 @@ function get_socio($chargebee_id, $socios)
 
 $socios = json_decode(file_get_contents('ciblage.json'), true);
 $id = !empty($_GET['id']) ? $_GET['id'] : $_POST['id'];
-$socio = get_socio($_POST['id'], $socios);
+$socio = get_socio($id, $socios);
 $displayName = $socio['firstname'] . " " . $socio['lastname'];
 
 $send = false;
