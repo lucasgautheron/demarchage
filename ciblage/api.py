@@ -62,10 +62,8 @@ def get_users():
 
     return users
 
-#df = pd.DataFrame.from_dict(get_users())
-#df.set_index('id', inplace = True)
-#df.to_csv('test.csv')
-df = pd.read_csv('test.csv')
+df = pd.DataFrame.from_dict(get_users())
+df.set_index('id', inplace = True)
 
 subscriptions = pd.read_csv('../pognon/active_subscriptions.csv')
 subscriptions.set_index('chargebee_id', inplace = True)

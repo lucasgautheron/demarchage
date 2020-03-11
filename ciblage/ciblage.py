@@ -23,5 +23,5 @@ ciblage = ciblage[(ciblage['next_billing_at'] >= next_billing['from'])
 ciblage = ciblage[(ciblage['phone'] != u'') & (ciblage['phone'].notnull())]
 ciblage['amount'] = ciblage['amount'] / 100
 ciblage.sort_values(by='amount', ascending = False, inplace = True)
-ciblage.to_csv('ciblage.csv')
-ciblage.to_json('ciblage.json', orient = 'records')
+ciblage.to_csv('../ciblage.csv')
+ciblage.to_json('../ciblage.json', orient = 'records')
