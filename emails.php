@@ -75,7 +75,8 @@ function get_mailjet_sent($email)
 
     $output = curl_exec($ch);
     $data = json_decode($output, true)['Data'];
-    $contact_id = $data['ID'];
+
+    $contact_id = $data[0]['ID'];
 
     $params = [
       'Contact' => $contact_id,
