@@ -92,7 +92,6 @@ function get_mailjet_sent($email)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
     $output = curl_exec($ch);
-    print_r(json_decode($output, true));
     return json_decode($output, true)['Data'];
 }
 
@@ -243,7 +242,7 @@ $(function() {
 
 $table_transac.bootstrapTable({
       idField: 'date',
-      toggle: 'table',
+      toggle: 'table_transac',
       filerControl: true,
       pagination: true,
       pageSize: 100,
