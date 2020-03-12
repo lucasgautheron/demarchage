@@ -81,7 +81,7 @@ function get_mailjet_sent($email)
     $params = [
       'Contact' => $contact_id,
       'ShowSubject' => 1,
-      'Sort' => 'ToTS+DESC'
+      'Sort' => 'ToTS+DESC',
       'Limit' => 1000
     ];
 
