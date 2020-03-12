@@ -63,8 +63,7 @@ function get_mailjet_sent($email)
     }
 
     $headers = [
-       "Content-Type: application/json",
-       "Authorization: Bearer " . self::MJ_TOKEN
+       "Content-Type: application/json"
     ];
 
     $ch = curl_init();
@@ -93,9 +92,10 @@ function get_mailjet_sent($email)
 
     $output = curl_exec($ch);
     print_r(json_decode($output, true));
+    return json_decode($output, true)['Data'];
 }
 
-get_mailjet_sent($from);
+$mailjet = get_mailjet_sent($from);
 
 $emails = [];
 foreach($users as $user)
@@ -191,6 +191,8 @@ td,th { font-size: 75%; }
       <script id="rendered-js" >
 var $table = $('#table');
 
+var $table_transac  = $('#table_transac');
+
 $(function() {
     $table.bootstrapTable({
       idField: 'date',
@@ -235,6 +237,43 @@ $(function() {
       }
       ],
       data: <?php echo json_encode($emails) ?>
+    })
+  })
+
+$table_transac.bootstrapTable({
+      idField: 'date',
+      toggle: 'table',
+      filerControl: true,
+      pagination: true,
+      pageSize: 100,
+      columns: [{
+        field: 'state',
+        title: '',
+        checkbox: true
+      }, {
+        field: 'Status',
+        title: 'État',
+        visible: true,
+        sortable: false
+      }, {
+        field: 'SenderID',
+        title: 'Expéditeur',
+        visible: false,
+        sortable: false
+      }, {
+        field: 'ArrivedAt',
+        title: 'Date',
+        sortable: false,
+        editable: false
+      }, {
+        field: 'Subject',
+        title: 'Titre',
+        sortable: false,
+        editable: false,
+        searchable: true
+      }
+      ],
+      data: <?php echo json_encode($mailjet) ?>
     })
   })
 
