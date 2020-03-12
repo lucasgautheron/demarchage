@@ -92,7 +92,7 @@ function get_mailjet_sent($email)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
     $output = curl_exec($ch);
-    print_r(json_decode($output, true);
+    print_r(json_decode($output, true));
 }
 
 get_mailjet_sent($from);
