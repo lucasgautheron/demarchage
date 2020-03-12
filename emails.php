@@ -84,7 +84,7 @@ function get_mailjet_sent($email)
       'Limit' => 1000
     ];
 
-    curl_setopt($ch, CURLOPT_URL, "https://api.mailjet.com/v3/REST/message" . http_build_query($params));
+    curl_setopt($ch, CURLOPT_URL, "https://api.mailjet.com/v3/REST/message/?" . http_build_query($params));
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_USERPWD, "{$MJ_APIKEY_PUBLIC}:{$MJ_APIKEY_PRIVATE}");
     curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
