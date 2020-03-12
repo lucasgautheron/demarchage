@@ -52,6 +52,51 @@ function utf8ize($d) {
     return $d;
 }
 
+function get_mailjet_sent($email)
+{
+    static $MJ_CREDENTIALS = null;
+
+    if (!$MJ_CREDENTIALS) {
+        $MJ_CREDENTIALS = json_decode(file_get_contents('emails/mailjet.json'), true);
+        $MJ_APIKEY_PUBLIC = $MJ_CREDENTIALS['USER'];
+        $MJ_APIKEY_PRIVATE = $MJ_CREDENTIALS['PASS'];
+    }
+
+    $headers = [
+       "Content-Type: application/json"
+    ];
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://api.mailjet.com/v3/REST/contact/" . urlencode($email));
+    curl_setopt($ch, CURLOPT_USERPWD, "{$MJ_APIKEY_PUBLIC}:{$MJ_APIKEY_PRIVATE}");
+    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    $output = curl_exec($ch);
+    $data = json_decode($output, true)['Data'];
+
+    $contact_id = $data[0]['ID'];
+
+    $params = [
+      'Contact' => $contact_id,
+      'ShowSubject' => 1,
+//      'Sort' => 'ArrivedAt+DESC',
+      'Limit' => 1000
+    ];
+
+    curl_setopt($ch, CURLOPT_URL, "https://api.mailjet.com/v3/REST/message/?" . http_build_query($params));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_USERPWD, "{$MJ_APIKEY_PUBLIC}:{$MJ_APIKEY_PRIVATE}");
+    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    $output = curl_exec($ch);
+    return json_decode($output, true)['Data'];
+}
+
+$mailjet = get_mailjet_sent($from);
+
 $emails = [];
 foreach($users as $user)
 {
@@ -125,6 +170,12 @@ td,th { font-size: 75%; }
 
 <table id="table">
 </table>
+
+<h2>E-mails transactionnels vers <?php echo htmlspecialchars($from); ?></h2>
+
+<table id="table_transac">
+</table>
+
 </div>
     <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-db44b196776521ea816683afab021f757616c80860d31da6232dedb8d7cc4862.js"></script>
 
@@ -139,6 +190,8 @@ td,th { font-size: 75%; }
   
       <script id="rendered-js" >
 var $table = $('#table');
+
+var $table_transac  = $('#table_transac');
 
 $(function() {
     $table.bootstrapTable({
@@ -184,6 +237,42 @@ $(function() {
       }
       ],
       data: <?php echo json_encode($emails) ?>
+    });
+
+$table_transac.bootstrapTable({
+      idField: 'date',
+      toggle: 'table_transac',
+      filerControl: true,
+      pagination: true,
+      pageSize: 100,
+      columns: [{
+        field: 'state',
+        title: '',
+        checkbox: true
+      }, {
+        field: 'Status',
+        title: 'État',
+        visible: true,
+        sortable: false
+      }, {
+        field: 'SenderID',
+        title: 'Expéditeur',
+        visible: false,
+        sortable: false
+      }, {
+        field: 'ArrivedAt',
+        title: 'Date',
+        sortable: false,
+        editable: false
+      }, {
+        field: 'Subject',
+        title: 'Titre',
+        sortable: false,
+        editable: false,
+        searchable: true
+      }
+      ],
+      data: <?php echo json_encode($mailjet) ?>
     })
   })
 
