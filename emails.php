@@ -245,6 +245,8 @@ $table_transac.bootstrapTable({
       filerControl: true,
       pagination: true,
       pageSize: 100,
+      sortName: 'ArrivedAt',
+      sortOrder: 'desc',
       columns: [{
         field: 'state',
         title: '',
