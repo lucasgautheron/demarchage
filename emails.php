@@ -57,7 +57,7 @@ function get_mailjet_sent($email)
     static $MJ_CREDENTIALS = null;
 
     if (!$MJ_CREDENTIALS) {
-        $MJ_CREDENTIALS = json_decode(file_get_contents('emails/mailjet.json'));
+        $MJ_CREDENTIALS = json_decode(file_get_contents('emails/mailjet.json'), true);
         $MJ_APIKEY_PUBLIC = $MJ_CREDENTIALS['USER'];
         $MJ_APIKEY_PRIVATE = $MJ_CREDENTIALS['PASS'];
     }
