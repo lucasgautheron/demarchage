@@ -237,8 +237,7 @@ $(function() {
       }
       ],
       data: <?php echo json_encode($emails) ?>
-    })
-  })
+    });
 
 $table_transac.bootstrapTable({
       idField: 'date',
