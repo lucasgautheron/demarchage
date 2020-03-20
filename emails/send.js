@@ -53,8 +53,6 @@ let mailjet = JSON.parse(fs.readFileSync('mailjet.json'));
 MAILJET_USER = mailjet['USER'];
 MAILJET_PASS = mailjet['PASS'];
 
-console.log(argv);
-
 production = argv.production === "production";
 
 let emailTemplate = new EmailTemplate({
@@ -75,23 +73,20 @@ let emailTemplate = new EmailTemplate({
   }
 });
 
-console.log(process.env.MAILJET_USER);
-console.log(process.env.MAILJET_PASS);
-
 async function __send(template, to, subject, attachment, variables) {
-  if (attachment) {
-      emailTemplate.attachments = [{
-          filename: attachment.filename,
-          path: attachment.path
-      }];
-  }
-  await emailTemplate.send({
-    template,
-    message: {
+   message = {
       to,
-      subject
-    },
-    locals: variables
+      subject,
+    }
+
+    if (attachment) {
+       message.attachments = [attachment];
+    }
+
+    await emailTemplate.send({
+      template,
+      message: message,
+      locals: variables
   })
 }
 
@@ -129,8 +124,8 @@ let attachment = null;
 if (argv.attachment)
 {
     attachment = {
-        filename: argv.attachment;
-        path: "attachments/" + argv.attachment;
+        filename: argv.attachment,
+        path: "attachments/" + argv.attachment
     };
 }
 
