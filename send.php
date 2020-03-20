@@ -4,8 +4,8 @@ $templates = [
     'mail-repondeur' => ['Répondeur', 'Renouvellement de votre adhésion au Média TV'],
     'mail-nna' => ['Numéro non-attribué', 'Renouvellement de votre adhésion au Média TV'],
     'mail-paiement-alternatif' => ['Moyen de paiement alternatif', 'Renouvellement de votre cotisation au Média TV', 'RIB.pdf'],
-    'mail-resiliation' => ['Résiliation', 'Résiliation de votre adhsion au Média TV'],
-    'mail-resiliation-urgente' => ['Résiliation urgente', 'Résiliation de votre adhsion au Média TV']
+    'mail-resiliation' => ['Résiliation', 'Résiliation de votre adhésion au Média TV'],
+    'mail-resiliation-urgente' => ['Résiliation urgente', 'Résiliation de votre adhésion au Média TV']
 ];
 
 $authors = [
@@ -37,8 +37,6 @@ if (!empty($_POST['id']))
     $author_email = $authors[$author];
     $template = $_POST['template'];
     $subject = $templates[$template][1];
-
-    $socio['email'] = 'lucas.gautheron@gmail.com';
 
     $attachment = "";
 
