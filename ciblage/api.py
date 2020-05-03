@@ -65,7 +65,7 @@ def get_users():
 df = pd.DataFrame.from_dict(get_users())
 df.set_index('id', inplace = True)
 
-subscriptions = pd.read_csv('../pognon/active_subscriptions.csv')
+subscriptions = pd.read_csv('../../pognon/active_subscriptions.csv')
 subscriptions.set_index('chargebee_id', inplace = True)
 subscriptions = subscriptions.merge(df, left_index = True, right_index = False, right_on = 'chargebeeId', how = 'inner')
 subscriptions['updateCardUrl'] = "https://www.lemediatv.fr/communaute/moyen-de-paiement?auth=" + subscriptions.authToken.map(str)

@@ -10,10 +10,10 @@ now = pd.to_datetime('now')
 socios['birthday'] = pd.to_datetime(socios['birthday'], format='%Y-%m-%d %H:%M:%S', errors = 'coerce')
 socios['age'] = (now.year - socios['birthday'].dt.year) - ((now.month - socios['birthday'].dt.month) < 0)
 
-expiry_limit = datetime.date(2020, 1, 1)
+expiry_limit = datetime.date(2020, 2, 1)
 ciblage = socios[socios['card_expiry'] < expiry_limit]
 
-next_billing = {'from': datetime.date(2020, 2, 1),'to': datetime.date(2020, 4, 1)}
+next_billing = {'from': datetime.date(2020, 3, 1),'to': datetime.date(2020, 6, 1)}
 ciblage = ciblage[(ciblage['next_billing_at'] >= next_billing['from'])
                 & (ciblage['next_billing_at'] <= next_billing['to'])]
 
