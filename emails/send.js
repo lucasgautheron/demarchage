@@ -40,6 +40,10 @@ const argv = require('yargs') // eslint-disable-line
     alias: 's',
     type: 'string',
     description: 'subject'
+  })
+  .option('attachment', {
+    type: 'string',
+    description: 'file attachment'
   }).argv
 
 
@@ -49,11 +53,9 @@ let mailjet = JSON.parse(fs.readFileSync('mailjet.json'));
 MAILJET_USER = mailjet['USER'];
 MAILJET_PASS = mailjet['PASS'];
 
-console.log(argv);
-
 production = argv.production === "production";
 
-const emailTemplate = new EmailTemplate({
+let emailTemplate = new EmailTemplate({
   views: { root: path.join(__dirname, ".") },
   message: {
     from: '"' + argv.author + ' du Média" <' + argv.from + '>'
@@ -71,25 +73,29 @@ const emailTemplate = new EmailTemplate({
   }
 });
 
-console.log(process.env.MAILJET_USER);
-console.log(process.env.MAILJET_PASS);
-
-async function __send(template, to, subject, variables) {
-  await emailTemplate.send({
-    template,
-    message: {
+async function __send(template, to, subject, attachment, variables) {
+   message = {
       to,
-      subject
-    },
-    locals: variables
+      subject,
+    }
+
+    if (attachment) {
+       message.attachments = [attachment];
+    }
+
+    await emailTemplate.send({
+      template,
+      message: message,
+      locals: variables
   })
 }
 
-async function sendEmail(template, subject, user, author, customText) {
+async function sendEmail(template, subject, user, author, customText = "", attachment = null) {
   __send(
     template,
     user.email,
     subject,
+    attachment,
     {
       title: subject,
       name: user.displayName,
@@ -112,9 +118,17 @@ user = {
 author = {
     displayName: argv.author,
     email: argv.from,
-    
 };
 
-sendEmail(argv.template, argv.subject, user, author, "");
+let attachment = null;
+if (argv.attachment)
+{
+    attachment = {
+        filename: argv.attachment,
+        path: "attachments/" + argv.attachment
+    };
+}
+
+sendEmail(argv.template, argv.subject, user, author, "", attachment);
 
 
