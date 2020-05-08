@@ -32,7 +32,7 @@ if (!empty($_POST['id']))
     $subject = $templates[$template]['subject'];
 
     if (is_array($subject)) {
-        $subject = $templates[$template]['titre'][array_rand($templates[$template]['subject'])];
+        $subject = $templates[$template]['subject'][array_rand($templates[$template]['subject'])];
     }
 
     $attachment = "";
