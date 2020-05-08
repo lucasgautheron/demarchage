@@ -1,0 +1,34 @@
+{
+  "mail-direct": {
+    "name": "Conversation en direct",
+    "subject": "Renouvellement de votre cotisation au Média TV"
+  },
+  "mail-repondeur": {
+    "name": "Répondeur",
+    "subject": "Renouvellement de votre adhésion au Média TV"
+  },
+  "mail-nna": {
+    "name": "Numéro non-attribué",
+    "subject": "Renouvellement de votre adhésion au Média TV"
+  },
+  "mail-paiement-alternatif": {
+    "name": "Moyen de paiement alternatif",
+    "subject": "Renouvellement de votre cotisation au Média TV",
+    "attachment": "RIB.pdf"
+  },
+  "mail-resiliation": {
+    "name": "Résiliation",
+    "subject": "Résiliation de votre adhésion au Média TV"
+  },
+  "mail-resiliation-urgente": {
+    "name": "Résiliation urgente",
+    "subject": "Résiliation de votre adhésion au Média TV"
+  },
+  "mail-relance": {
+    "name": "Relance",
+    "subject": [
+      "Comment renouveler votre cotisation au Média TV",
+      "Dernières étapes pour renouveler votre cotisation au Média TV"
+    ]
+  }
+}

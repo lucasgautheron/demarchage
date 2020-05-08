@@ -1,12 +1,5 @@
 <?php
-$templates = [
-    'mail-direct' => ['Conversation en direct', 'Renouvellement de votre cotisation au Média TV'],
-    'mail-repondeur' => ['Répondeur', 'Renouvellement de votre adhésion au Média TV'],
-    'mail-nna' => ['Numéro non-attribué', 'Renouvellement de votre adhésion au Média TV'],
-    'mail-paiement-alternatif' => ['Moyen de paiement alternatif', 'Renouvellement de votre cotisation au Média TV', 'RIB.pdf'],
-    'mail-resiliation' => ['Résiliation', 'Résiliation de votre adhésion au Média TV'],
-    'mail-resiliation-urgente' => ['Résiliation urgente', 'Résiliation de votre adhésion au Média TV']
-];
+$templates = json_decode(file_get_contents('emails/templates.json'), true);
 
 $authors = [
   'Katell' => 'katell.gouello@lemediatv.fr',
@@ -36,12 +29,16 @@ if (!empty($_POST['id']))
     $author = $_POST['author'];
     $author_email = $authors[$author];
     $template = $_POST['template'];
-    $subject = $templates[$template][1];
+    $subject = $templates[$template]['subject'];
+
+    if (is_array($subject)) {
+        $subject = $templates[$template]['titre'][array_rand($templates[$template]['subject'])];
+    }
 
     $attachment = "";
 
-    if (count($templates[$template]) >= 3) {
-        $attachment = "--attachment='" . $templates[$template][2] . "'";
+    if (array_key_exists('attachment', $templates[$template])) {
+        $attachment = "--attachment='" . $templates[$template]['attachment'] . "'";
     }
 
     $cmd = "cd emails && node send.js --production=production --displayName=\"$displayName\" --email=\"{$socio['email']}\" --updateCardUrl=\"{$socio['updateCardUrl']}\" --author=\"$author\" --from=\"{$author_email}\" --template=\"{$template}\" --subject=\"$subject\" $attachment";
@@ -106,7 +103,7 @@ td,th { font-size: 75%; }
 </p>
 <p><select name="template">
 <?php foreach($templates as $id => $template): ?>
-    <option value="<?php echo $id ?>"><?php echo $template[0] ?></option>
+    <option value="<?php echo $id ?>"><?php echo $template['name'] ?></option>
 <?php endforeach; ?>
 </select> Modèle</p>
 <p><input type="submit" value="Envoyer" /></p>
