@@ -113,6 +113,11 @@ foreach($users as $user)
     }
 }
 
+if (!empty($_GET['method']) && $_GET['method'] == 'json') {
+    echo json_encode($mailjet);
+    die();
+}
+
 ?>
 
 <!DOCTYPE html>
