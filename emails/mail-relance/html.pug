@@ -1,0 +1,39 @@
+extends ../layouts/basic.pug
+
+block content
+  p Bonjour #{name},
+
+  p
+    | Je suis #{signature} de la webTV Le Média et suite à mon récent appel, je me permets de vous recontacter afin de savoir si vous n'avez pas rencontré un problème lors de la mise jour de votre cotisation au Média TV. Je me tiens bien entendu à votre disposition pour toute demande d'information si vous en avez besoin.
+
+  p
+    | Je vous envoie 
+    a(href=link) ce lien
+    |  qui vous permettra de renouveler votre moyen de paiement et de continuer à soutenir Le Média TV, notre outil commun de résistance médiatique.
+
+
+  p
+    | Afin de mettre votre carte bleue à jour sur votre espace Socio, vous pouvez vous rendre sur notre site : 
+    a(href='https://www.lemediatv.fr/') lemediatv.fr
+
+  ol
+    li 
+      | Cliquez sur 
+      strong “Menu”
+      |  puis tout en bas sur la rubrique 
+      strong "Mon compte"
+    li
+      | Une fois sur votre compte Socio, vous pouvez cliquer sur l'onglet rouge 
+      strong "Ma contribution"
+      |  puis tout en bas de la page, sur 
+      strong “Modifier ma carte bancaire”
+    li
+      | Une fois votre numéro de carte mis à jour, il ne vous reste plus qu'à cliquer sur 
+      strong “Enregistrer”
+      |  pour finaliser la mise à jour de votre cotisation au Média.
+
+  p Toute l'équipe du Média TV se joint à moi pour vous remercier de votre soutien. 
+
+  p Bien à vous,
+  
+  p #{signature}

@@ -1,16 +1,10 @@
 <?php
-$templates = [
-    'mail-direct' => ['Conversation en direct', 'Renouvellement de votre cotisation au Média TV'],
-    'mail-repondeur' => ['Répondeur', 'Renouvellement de votre adhésion au Média TV'],
-    'mail-nna' => ['Numéro non-attribué', 'Renouvellement de votre adhésion au Média TV'],
-    'mail-paiement-alternatif' => ['Moyen de paiement alternatif', 'Renouvellement de votre cotisation au Média TV', 'RIB.pdf'],
-    'mail-resiliation' => ['Résiliation', 'Résiliation de votre adhésion au Média TV'],
-    'mail-resiliation-urgente' => ['Résiliation urgente', 'Résiliation de votre adhésion au Média TV']
-];
+$templates = json_decode(file_get_contents('emails/templates.json'), true);
 
 $authors = [
-  'Katell' => 'katell.gouello@lemediatv.fr',
-  'Thibault' => 'thibault@lemediatv.fr'
+  'katell' => ['displayName' => 'Katell', 'email' => 'katell.gouello@lemediatv.fr'],
+  'thibault' => ['displayName'=> 'Thibault', 'email'=> 'thibault@lemediatv.fr'],
+  'lucas' => ['displayName'=> 'Lucas', 'email' => 'lucas.gautheron@lemediatv.fr']
 ];
 
 function get_socio($chargebee_id, $socios)
@@ -33,15 +27,19 @@ if (!empty($_POST['id']))
 {
     $send = true;
 
-    $author = $_POST['author'];
-    $author_email = $authors[$author];
+    $author = $authors[$_POST['author']]['displayName'];
+    $author_email = $authors[$_POST['author']]['email'];
     $template = $_POST['template'];
-    $subject = $templates[$template][1];
+    $subject = $templates[$template]['subject'];
+
+    if (is_array($subject)) {
+        $subject = $templates[$template]['subject'][array_rand($templates[$template]['subject'])];
+    }
 
     $attachment = "";
 
-    if (count($templates[$template]) >= 3) {
-        $attachment = "--attachment='" . $templates[$template][2] . "'";
+    if (array_key_exists('attachment', $templates[$template])) {
+        $attachment = "--attachment='" . $templates[$template]['attachment'] . "'";
     }
 
     $cmd = "cd emails && node send.js --production=production --displayName=\"$displayName\" --email=\"{$socio['email']}\" --updateCardUrl=\"{$socio['updateCardUrl']}\" --author=\"$author\" --from=\"{$author_email}\" --template=\"{$template}\" --subject=\"$subject\" $attachment";
@@ -100,13 +98,24 @@ td,th { font-size: 75%; }
 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>" />
 <p>
 <select name="author">
-    <option value="Katell">Katell</option>
-    <option value="Thibault">Thibault</option>
+<?php foreach($authors as $author => $attr): ?>
+  <?php if ($author == $_SERVER['REMOTE_USER']): ?>
+    <option
+     value="<?php echo $author ?>"
+     selected="selected">
+      <?php echo $attr['displayName'] ?>
+    </option>
+  <?php else: ?>
+    <option value="<?php echo $author ?>">
+      <?php echo $attr['displayName'] ?>
+    </option>
+  <?php endif; ?>
+<?php endforeach; ?>
 </select> Signature
 </p>
 <p><select name="template">
 <?php foreach($templates as $id => $template): ?>
-    <option value="<?php echo $id ?>"><?php echo $template[0] ?></option>
+    <option value="<?php echo $id ?>"><?php echo $template['name'] ?></option>
 <?php endforeach; ?>
 </select> Modèle</p>
 <p><input type="submit" value="Envoyer" /></p>
