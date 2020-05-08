@@ -2,9 +2,9 @@
 $templates = json_decode(file_get_contents('emails/templates.json'), true);
 
 $authors = [
-  'katell' => 'katell.gouello@lemediatv.fr',
-  'thibault' => 'thibault@lemediatv.fr',
-  'lucas' => 'lucas.gautheron@lemediatv.fr'
+  'katell' => ['displayName' => 'Katell', 'email' => 'katell.gouello@lemediatv.fr'],
+  'thibault' => ['displayName'=> 'Thibault', 'email'=> 'thibault@lemediatv.fr'],
+  'lucas' => ['displayName'=> 'Lucas', 'email' => 'lucas.gautheron@lemediatv.fr']
 ];
 
 function get_socio($chargebee_id, $socios)
@@ -27,8 +27,8 @@ if (!empty($_POST['id']))
 {
     $send = true;
 
-    $author = $_POST['author'];
-    $author_email = $authors[$author];
+    $author = $authors[$_POST['author']]['displayName'];
+    $author_email = $authors[$_POST['author']]['email'];
     $template = $_POST['template'];
     $subject = $templates[$template]['subject'];
 
@@ -98,16 +98,16 @@ td,th { font-size: 75%; }
 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>" />
 <p>
 <select name="author">
-<?php foreach($authors as $author => $email): ?>
+<?php foreach($authors as $author => $attr): ?>
   <?php if ($author == $_SERVER['REMOTE_USER']): ?>
     <option
      value="<?php echo $author ?>"
      selected="selected">
-      <?php echo $author ?>
+      <?php echo $attr['displayName'] ?>
     </option>
   <?php else: ?>
     <option value="<?php echo $author ?>">
-      <?php echo $author ?>
+      <?php echo $attr['displayName'] ?>
     </option>
   <?php endif; ?>
 <?php endforeach; ?>
